@@ -1,0 +1,72 @@
+{
+  "questionOrder": ["q1", "q2", "q3", "q4", "q5", "q6"],
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Wie oft bist du schon in Thermik geflogen?",
+      "type": "multiple_choice",
+      "skillId": "thermalling",
+      "options": [
+        { "text": "Nie", "score": 0 },
+        { "text": "Einige Male mit Fluglehrer", "score": 1 },
+        { "text": "Regelmäßig alleine", "score": 2 },
+        { "text": "Sicher in verschiedenen Bedingungen", "score": 3 }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Wie schätzt du dein Kiten bei starkem oder böigem Wind ein?",
+      "type": "multiple_choice",
+      "skillId": "kiting",
+      "options": [
+        { "text": "Ich meide starken Wind", "score": 0 },
+        { "text": "Mit Aufsicht schaffe ich es", "score": 1 },
+        { "text": "Alleine kiten geht sicher", "score": 2 },
+        { "text": "Sicher bei starkem und böigem Wind", "score": 3 }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Kannst du einen Rückwärtsstart zuverlässig ausführen?",
+      "type": "multiple_choice",
+      "skillId": "launch",
+      "options": [
+        { "text": "Nein", "score": 0 },
+        { "text": "Manchmal, bei ruhigem Wind", "score": 1 },
+        { "text": "Ja, meistens", "score": 2 },
+        { "text": "Ja, bei verschiedenen Windbedingungen", "score": 3 }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Wie oft übst du Speedbar und Gewichtsverlagerung für aktives Fliegen?",
+      "type": "likert",
+      "skillId": "active_flying",
+      "scoreMultiplier": 1,
+      "scale": [
+        { "label": "Nie", "value": -3 },
+        { "label": "Selten", "value": -1 },
+        { "label": "Manchmal", "value": 0 },
+        { "label": "Regelmäßig", "value": 1 },
+        { "label": "Immer", "value": 3 }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "Wie viele XC-Flüge hast du ungefähr gemacht (gesamt)?",
+      "type": "numerical",
+      "skillId": "xc_basics",
+      "scoreMultiplier": 0.5,
+      "hint": "Gib eine Zahl ein (z. B. 0, 5, 20). Zähle Flüge, bei denen du den Berg verlassen und Strecke geflogen bist."
+    },
+    {
+      "id": "q6",
+      "text": "Link zu deinem Gleitschirm-Logbuch oder Flugnachweis (optional)",
+      "type": "text_input",
+      "skillId": "evidence",
+      "presenceScore": 1,
+      "absenceScore": 0,
+      "placeholder": "https://..."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "skills": [
+    { "id": "thermalling", "name": "Thermik" },
+    { "id": "kiting", "name": "Kiten am Wind" },
+    { "id": "launch", "name": "Starttechnik" },
+    { "id": "active_flying", "name": "Aktives Fliegen (Speedbar, Gewichtsverlagerung)" },
+    { "id": "xc_basics", "name": "XC-Erfahrung" },
+    { "id": "evidence", "name": "Logbuch oder Nachweis" }
+  ],
+  "courses": [
+    {
+      "id": "xc-tour",
+      "name": "XC-Tour",
+      "description": "Mehrtägige Streckenflug-Tour mit Thermik und längeren Flügen.",
+      "url": "/courses/xc-tour",
+      "threshold": 45,
+      "weights": {
+        "thermalling": 3,
+        "kiting": 2,
+        "launch": 2,
+        "active_flying": 2,
+        "xc_basics": 3,
+        "evidence": 1
+      },
+      "minSkillLevel": {
+        "thermalling": 2,
+        "kiting": 1,
+        "launch": 2,
+        "active_flying": 0,
+        "xc_basics": 2,
+        "evidence": 0
+      },
+      "fallbackCourseId": "thermalling-basics",
+      "fallbackLabel": "Kurs Thermik-Grundlagen",
+      "fallbackUrl": "/courses/thermalling-basics"
+    },
+    {
+      "id": "thermalling-basics",
+      "name": "Thermik-Grundlagen",
+      "description": "Thermik finden und sicher nutzen lernen.",
+      "url": "/courses/thermalling-basics",
+      "threshold": 25,
+      "weights": {
+        "thermalling": 1,
+        "kiting": 2,
+        "launch": 2,
+        "active_flying": 1,
+        "xc_basics": 0,
+        "evidence": 0
+      },
+      "minSkillLevel": {
+        "thermalling": 0,
+        "kiting": 1,
+        "launch": 1,
+        "active_flying": 0,
+        "xc_basics": 0,
+        "evidence": 0
+      },
+      "fallbackCourseId": null,
+      "fallbackLabel": null,
+      "fallbackUrl": null
+    },
+    {
+      "id": "siv",
+      "name": "SIV / Sicherheitskurs",
+      "description": "Rettungstechniken und Handling in kontrollierter Umgebung.",
+      "url": "/courses/siv",
+      "threshold": 30,
+      "weights": {
+        "thermalling": 1,
+        "kiting": 3,
+        "launch": 2,
+        "active_flying": 2,
+        "xc_basics": 1,
+        "evidence": 0
+      },
+      "minSkillLevel": {
+        "thermalling": 0,
+        "kiting": 2,
+        "launch": 1,
+        "active_flying": 0,
+        "xc_basics": 0,
+        "evidence": 0
+      },
+      "fallbackCourseId": null,
+      "fallbackLabel": null,
+      "fallbackUrl": null
+    }
+  ]
+}
