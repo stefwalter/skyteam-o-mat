@@ -1,21 +1,21 @@
 {
-  "questionOrder": ["q1", "q2", "q3", "q4", "q5", "q6"],
+  "questionOrder": ["q1", "q2", "q3", "q4", "q5"],
   "questions": [
     {
       "id": "q1",
-      "text": "Wie oft bist du schon in Thermik geflogen?",
+      "text": "Wie oft startest du Vorwärts, bei Nullwind, oder leicht Rückendwind?",
       "type": "multiple_choice",
-      "skillId": "thermalling",
+      "skillId": "forward_launch",
       "options": [
-        { "text": "Nie", "score": 0 },
-        { "text": "Einige Male mit Fluglehrer", "score": 1 },
-        { "text": "Regelmäßig alleine", "score": 2 },
-        { "text": "Sicher in verschiedenen Bedingungen", "score": 3 }
+        { "text": "Immer Rückwarts", "score": 0 },
+        { "text": "Ich starte nur Vorärts", "score": 1 },
+        { "text": "Nur im Winter", "score": 3 },
+        { "text": "Ofters, alle paar Wochen", "score": 5 }
       ]
     },
     {
       "id": "q2",
-      "text": "Wie schätzt du dein Kiten bei starkem oder böigem Wind ein?",
+      "text": "Wie schätzt du dein Kiten bei starkem (20+ kmh) oder böigem Wind ein?",
       "type": "multiple_choice",
       "skillId": "kiting",
       "options": [
@@ -29,7 +29,7 @@
       "id": "q3",
       "text": "Kannst du einen Rückwärtsstart zuverlässig ausführen?",
       "type": "multiple_choice",
-      "skillId": "launch",
+      "skillId": "reverse_launch",
       "options": [
         { "text": "Nein", "score": 0 },
         { "text": "Manchmal, bei ruhigem Wind", "score": 1 },
@@ -38,35 +38,50 @@
       ]
     },
     {
-      "id": "q4",
-      "text": "Wie oft übst du Speedbar und Gewichtsverlagerung für aktives Fliegen?",
-      "type": "likert",
-      "skillId": "active_flying",
-      "scoreMultiplier": 1,
-      "scale": [
-        { "label": "Nie", "value": -3 },
-        { "label": "Selten", "value": -1 },
-        { "label": "Manchmal", "value": 0 },
-        { "label": "Regelmäßig", "value": 1 },
-        { "label": "Immer", "value": 3 }
-      ]
+        "id": "q3",
+        "text": "Wie oft suchst du einen Peilpunkt, und triffst den innerhablb 10m bei der Landung?",
+        "type": "multiple_choice",
+        "skillId": "punkt_landung",
+        "options": [
+          { "text": "Nein", "score": 0 },
+          { "text": "Manchmal, bei ruhigem Wind", "score": 1 },
+          { "text": "Ja, meistens", "score": 2 },
+          { "text": "Ja, bei verschiedenen Windbedingungen", "score": 3 }
+        ]
+      },
+      {
+        "id": "q3",
+        "text": "Wie machst du einen Starkwind Landung (20+ kmh)?",
+        "type": "multiple_choice",
+        "skillId": "starkwind_landung",
+        "options": [
+          { "text": "Nie gemacht", "score": 0 },
+          { "text": "Mit eine normale Landevolte", "score": 1 },
+          { "text": "Ich achtere bis zum Boden", "score": 2 },
+          { "text": "Achtern an der Position und einen normalen Endanflug", "score": 3 }
+        ]
+      },
+      {
+        "id": "q4",
+        "text": "Wie oft läufst du, oder machst mehr als 30 minuten Kardio-Training?",
+        "type": "likert",
+        "skillId": "fitness_cardio",
+        "scoreMultiplier": 1,
+        "scale": [
+            { "label": "Nie", "value": -3 },
+            { "label": "Kaum", "value": -1 },
+            { "label": "Einmal im Monat", "value": 0 },
+            { "label": "Wochentlich", "value": 1 },
+            { "label": "Mehrmals pro Woche", "value": 3 }
+        ]
     },
     {
       "id": "q5",
-      "text": "Wie viele XC-Flüge hast du ungefähr gemacht (gesamt)?",
+      "text": "Wie viele Berge touren über 1000 Höhenmeter pro Tag hast du bereits gemacht?",
       "type": "numerical",
-      "skillId": "xc_basics",
+      "skillId": "fitness_mountain",
       "scoreMultiplier": 0.5,
-      "hint": "Gib eine Zahl ein (z. B. 0, 5, 20). Zähle Flüge, bei denen du den Berg verlassen und Strecke geflogen bist."
-    },
-    {
-      "id": "q6",
-      "text": "Link zu deinem Gleitschirm-Logbuch oder Flugnachweis (optional)",
-      "type": "text_input",
-      "skillId": "evidence",
-      "presenceScore": 1,
-      "absenceScore": 0,
-      "placeholder": "https://..."
+      "hint": "Gib eine Zahl ein (z. B. 0, 5, 20). Zähle Berge wo du über 1000 Höhenmeter gestiegen bist."
     }
   ]
 }

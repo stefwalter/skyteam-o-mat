@@ -1,86 +1,37 @@
 {
   "skills": [
-    { "id": "thermalling", "name": "Thermik" },
+    { "id": "formard_launch", "name": "Thermik" },
     { "id": "kiting", "name": "Kiten am Wind" },
-    { "id": "launch", "name": "Starttechnik" },
-    { "id": "active_flying", "name": "Aktives Fliegen (Speedbar, Gewichtsverlagerung)" },
-    { "id": "xc_basics", "name": "XC-Erfahrung" },
-    { "id": "evidence", "name": "Logbuch oder Nachweis" }
+    { "id": "reverse_launch", "name": "Starttechnik" },
+    { "id": "punkt_landung", "name": "Landung auf kleiner Fläche" },
+    { "id": "starkwind_landung", "name": "Starkwind Landung" },
+    { "id": "fitness_cardio", "name": "Cardio Training" },
+    { "id": "fitness_mountain", "name": "Hike Erfahrung" }
   ],
   "courses": [
     {
-      "id": "xc-tour",
-      "name": "XC-Tour",
-      "description": "Mehrtägige Streckenflug-Tour mit Thermik und längeren Flügen.",
-      "url": "/courses/xc-tour",
-      "threshold": 45,
-      "weights": {
-        "thermalling": 3,
-        "kiting": 2,
-        "launch": 2,
-        "active_flying": 2,
-        "xc_basics": 3,
-        "evidence": 1
-      },
-      "minSkillLevel": {
-        "thermalling": 2,
-        "kiting": 1,
-        "launch": 2,
-        "active_flying": 0,
-        "xc_basics": 2,
-        "evidence": 0
-      },
-      "fallbackCourseId": "thermalling-basics",
-      "fallbackLabel": "Kurs Thermik-Grundlagen",
-      "fallbackUrl": "/courses/thermalling-basics"
-    },
-    {
-      "id": "thermalling-basics",
-      "name": "Thermik-Grundlagen",
-      "description": "Thermik finden und sicher nutzen lernen.",
-      "url": "/courses/thermalling-basics",
-      "threshold": 25,
-      "weights": {
-        "thermalling": 1,
-        "kiting": 2,
-        "launch": 2,
-        "active_flying": 1,
-        "xc_basics": 0,
-        "evidence": 0
-      },
-      "minSkillLevel": {
-        "thermalling": 0,
-        "kiting": 1,
-        "launch": 1,
-        "active_flying": 0,
-        "xc_basics": 0,
-        "evidence": 0
-      },
-      "fallbackCourseId": null,
-      "fallbackLabel": null,
-      "fallbackUrl": null
-    },
-    {
-      "id": "siv",
-      "name": "SIV / Sicherheitskurs",
-      "description": "Rettungstechniken und Handling in kontrollierter Umgebung.",
-      "url": "/courses/siv",
+      "id": "hike-and-fly-woche",
+      "name": "Hike and Fly Woche",
+      "description": "Einer Woche voller Hike and Fly, in den schönen Südtiroler Herbst.",
+      "url": "/courses/hike-and-fly-woche",
       "threshold": 30,
       "weights": {
-        "thermalling": 1,
-        "kiting": 3,
-        "launch": 2,
-        "active_flying": 2,
-        "xc_basics": 1,
-        "evidence": 0
+        "formard_launch": 1,
+        "kiting": 1,
+        "reverse_launch": 1,
+        "punkt_landung": 1,
+        "starkwind_landung": 1,
+        "fitness_cardio": 1,
+        "fitness_mountain": 1
       },
       "minSkillLevel": {
-        "thermalling": 0,
-        "kiting": 2,
-        "launch": 1,
-        "active_flying": 0,
-        "xc_basics": 0,
-        "evidence": 0
+        "formard_launch": 3,
+        "kiting": 1,
+        "reverse_launch": 2,
+        "punkt_landung": 1,
+        "starkwind_landung": 2,
+        "fitness_cardio": 0,
+        "fitness_mountain": 0
       },
       "fallbackCourseId": null,
       "fallbackLabel": null,

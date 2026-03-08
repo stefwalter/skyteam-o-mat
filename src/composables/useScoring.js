@@ -44,7 +44,7 @@ export function evaluateCourse(skillScores, course, skills) {
   const weights = course.weights || {}
   let weightedScore = 0
   for (const [skillId, score] of Object.entries(skillScores)) {
-    const w = weights[skillId] ?? 0
+    const w = weights[skillId] ?? 1
     weightedScore += (score || 0) * w
   }
 
