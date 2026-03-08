@@ -34,9 +34,11 @@ const emit = defineEmits(['restart'])
       </ul>
     </div>
 
+    <!--
     <p class="score-note">
       Gewichtete Punktzahl: {{ result.weightedScore }} von {{ result.threshold }} (Mindestanforderung).
     </p>
+    -->
 
     <button type="button" class="btn btn-restart" @click="emit('restart')">
       Von vorn starten
