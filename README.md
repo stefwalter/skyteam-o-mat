@@ -11,6 +11,14 @@ npm run dev
 
 Öffne http://localhost:5173/ – die Seite enthält ein Beispiel-Embed des Wizards (`<div id="course-finder-wizard">`).
 
+## Tests
+
+```bash
+npm run test
+```
+
+Unit-Tests für die Scoring-Logik (`src/composables/useScoring.js`). Watch-Modus: `npm run test:watch`.
+
 ## Produktion einbinden
 
 1. Build ausführen: `npm run build`
