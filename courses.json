@@ -1,8 +1,8 @@
 {
   "skills": [
-    { "id": "formard_launch", "name": "Thermik" },
+    { "id": "formard_launch", "name": "Forwärts Start" },
     { "id": "kiting", "name": "Kiten am Wind" },
-    { "id": "reverse_launch", "name": "Starttechnik" },
+    { "id": "reverse_launch", "name": "Rückwärts Start" },
     { "id": "punkt_landung", "name": "Landung auf kleiner Fläche" },
     { "id": "starkwind_landung", "name": "Starkwind Landung" },
     { "id": "fitness_cardio", "name": "Cardio Training" },
@@ -14,9 +14,9 @@
       "name": "Hike and Fly Woche",
       "description": "Einer Woche voller Hike and Fly, in den schönen Südtiroler Herbst.",
       "url": "/courses/hike-and-fly-woche",
-      "threshold": 30,
+      "threshold": 1,
       "weights": {
-        "formard_launch": 1,
+        "forward_launch": 1,
         "kiting": 1,
         "reverse_launch": 1,
         "punkt_landung": 1,
@@ -25,7 +25,7 @@
         "fitness_mountain": 1
       },
       "minSkillLevel": {
-        "formard_launch": 3,
+        "forward_launch": 3,
         "kiting": 1,
         "reverse_launch": 2,
         "punkt_landung": 1,

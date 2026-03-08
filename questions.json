@@ -1,5 +1,5 @@
 {
-  "questionOrder": ["q1", "q2", "q3", "q4", "q5"],
+  "questionOrder": ["q1", "q2", "q3", "q4", "q5", "q6", "q7"],
   "questions": [
     {
       "id": "q1",
@@ -38,7 +38,7 @@
       ]
     },
     {
-        "id": "q3",
+        "id": "q4",
         "text": "Wie oft suchst du einen Peilpunkt, und triffst den innerhablb 10m bei der Landung?",
         "type": "multiple_choice",
         "skillId": "punkt_landung",
@@ -50,7 +50,7 @@
         ]
       },
       {
-        "id": "q3",
+        "id": "q5",
         "text": "Wie machst du einen Starkwind Landung (20+ kmh)?",
         "type": "multiple_choice",
         "skillId": "starkwind_landung",
@@ -62,7 +62,7 @@
         ]
       },
       {
-        "id": "q4",
+        "id": "q6",
         "text": "Wie oft läufst du, oder machst mehr als 30 minuten Kardio-Training?",
         "type": "likert",
         "skillId": "fitness_cardio",
@@ -76,7 +76,7 @@
         ]
     },
     {
-      "id": "q5",
+      "id": "q7",
       "text": "Wie viele Berge touren über 1000 Höhenmeter pro Tag hast du bereits gemacht?",
       "type": "numerical",
       "skillId": "fitness_mountain",
