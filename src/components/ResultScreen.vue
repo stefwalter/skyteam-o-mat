@@ -1,10 +1,30 @@
 <script setup>
-defineProps({
+const props = defineProps({
   course: { type: Object, required: true },
   result: { type: Object, required: true },
   skillNames: { type: Object, default: () => ({}) },
+  onComplete: { type: Function, default: null },
 })
 const emit = defineEmits(['restart'])
+
+function getCompletionPayload() {
+  const missingSkillNames = (props.result.missingSkills || []).map((s) => props.skillNames[s.id] ?? s.id)
+  return {
+    courseId: props.course.id,
+    courseName: props.course.name,
+    meetsThreshold: props.result.meetsThreshold,
+    fallbackLabel: props.result.fallbackLabel ?? null,
+    fallbackUrl: props.result.fallbackUrl ?? null,
+    missingSkillNames,
+    weightedScore: props.result.weightedScore,
+    threshold: props.result.threshold,
+    completedAt: new Date().toISOString(),
+  }
+}
+
+function finish() {
+  if (props.onComplete) props.onComplete(getCompletionPayload())
+}
 </script>
 
 <template>
@@ -40,9 +60,14 @@ const emit = defineEmits(['restart'])
     </p>
     -->
 
-    <button type="button" class="btn btn-restart" @click="emit('restart')">
-      Von vorn starten
-    </button>
+    <div class="result-actions">
+      <button v-if="onComplete" type="button" class="btn btn-primary" @click="finish">
+        Fertig
+      </button>
+      <button type="button" class="btn btn-restart" @click="emit('restart')">
+        Von vorn starten
+      </button>
+    </div>
   </section>
 </template>
 
@@ -107,6 +132,24 @@ const emit = defineEmits(['restart'])
   border: 2px solid #666;
   background: #fff;
   color: #333;
+}
+.result-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid #0a7ea4;
+  background: #0a7ea4;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #086a8a;
+  border-color: #086a8a;
 }
 .btn-restart:hover {
   background: #f5f5f5;

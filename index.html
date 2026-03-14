@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kurs-Finder – Skyteam-o-mat</title>
+  <title>Kurs-Finder – Skyteam-o-mat (Embed-Test)</title>
 </head>
 <body>
-  <div id="course-finder-wizard"></div>
-  <script type="module" src="/src/main.js"></script>
+  <h1>Embed-Test</h1>
+  <p>
+    <button type="button" data-skyteam-wizard>Kurs-Finder öffnen</button>
+  </p>
+  <p>
+    <label>Ergebnis (wird nach „Fertig” gefüllt): <input type="text" name="wizard_result" readonly style="width:100%;max-width:400px" /></label>
+  </p>
+  <script type="module" src="/src/embed.js" data-trigger-selector="[data-skyteam-wizard]" data-result-field-selector="[name=wizard_result]" data-storage-key="skyteam_wizard_result"></script>
 </body>
 </html>

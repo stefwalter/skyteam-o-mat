@@ -7,6 +7,10 @@ import { computeSkillScores, evaluateCourse } from './composables/useScoring'
 import questionsData from '../questions.json'
 import coursesData from '../courses.json'
 
+defineProps({
+  onComplete: { type: Function, default: null },
+})
+
 const questions = questionsData.questions
 const questionOrder = questionsData.questionOrder || questions.map((q) => q.id)
 const courses = coursesData.courses
@@ -174,6 +178,7 @@ onMounted(() => {
         :course="currentCourse"
         :result="result"
         :skill-names="Object.fromEntries(skills.map((s) => [s.id, s.name]))"
+        :on-complete="onComplete"
         @restart="restart"
       />
     </template>

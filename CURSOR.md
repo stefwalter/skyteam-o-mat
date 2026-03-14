@@ -15,9 +15,12 @@ Use this file as shared context and conventions for the Skyteam-o-mat project.
 ## Tech and structure
 
 - **Stack**: Vue 3, Vite. No Vue Router (linear wizard).
-- **Embed**: The app mounts on `#course-finder-wizard`. Build outputs go in `dist/`; the host page includes the built JS and CSS and provides a `<div id="course-finder-wizard">`.
-- **Data**: Questions and courses are defined in **`questions.json`** and **`courses.json`** at the project root. The app imports them at build time (they are bundled).
-- **Plan**: Full logic, data model, and implementation order are in **`PLAN.md`**.
+- **Embed (Produktion)**: Ein **einziges Script** (`dist/skyteam-wizard.js`, erzeugt mit `npm run build:embed`). Enthält Vue, alle Komponenten und **CSS im JS** (kein separates Stylesheet). Die Host-Seite bindet nur diese eine Datei ein.
+- **Modal**: Der Wizard erscheint als **Popup-Modal** über der Seite. Ein konfigurierbarer **Trigger-Selektor** (z. B. `[data-skyteam-wizard]`) kennzeichnet Buttons; Klicks werden abgefangen und öffnen das Modal statt der ursprünglichen Aktion.
+- **Ergebnis**: Beim Klick auf „Fertig“ wird das Ergebnis in **sessionStorage** gespeichert (Key konfigurierbar). Ist ein **Formularfeld-Selektor** angegeben, wird das gefundene Feld mit dem gespeicherten Wert (JSON-String) gefüllt.
+- **Konfiguration**: Über Data-Attribute am Script-Tag: `data-trigger-selector`, `data-result-field-selector`, `data-storage-key`. Siehe README.
+- **Data**: Questions and courses are in **`questions.json`** and **`courses.json`** at the project root; bundled at build time.
+- **Plan**: Full logic and data model in **`PLAN.md`**.
 
 ---
 
