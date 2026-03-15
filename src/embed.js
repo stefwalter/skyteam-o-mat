@@ -1,28 +1,24 @@
 /**
  * Skyteam-o-mat wizard: script-only embed.
- * Load via: <script src="skyteam-wizard.js" data-trigger-selector="[data-skyteam-wizard]" data-result-field-selector="[name=wizard_result]" data-storage-key="skyteam_wizard_result"></script>
- * Config (data attributes or init options): triggerSelector, resultFieldSelector, storageKey.
+ * Load via: <script src="skyteam-wizard.js"></script>
+ * Trigger, result field, and storage key are built-in (see constants below). Pass overrides to init() for testing.
  */
 import { createApp } from 'vue'
 import App from './App.vue'
 
-const STORAGE_KEY_DEFAULT = 'skyteam_wizard_result'
+/** Built-in config (baked in at build time; not configurable at runtime). */
+const TRIGGER_SELECTOR = 'a[href*=allgaeu][class~=booking]'
+const RESULT_FIELD_SELECTOR = 'input#bemerkungen'
+const STORAGE_KEY = 'skyteam_o_mat'
+
 const MODAL_ID = 'skyteam-wizard-modal'
 const MODAL_STYLES_ID = 'skyteam-wizard-modal-styles'
 
 function getConfig() {
-  let script = document.currentScript
-  if (!script) {
-    script = document.querySelector('script[data-trigger-selector], script[data-trigger]')
-    if (!script) {
-      script = document.querySelector('script[src*="embed.js"], script[src*="skyteam-wizard.js"]')
-    }
-  }
-  if (!script) return {}
   return {
-    triggerSelector: script.getAttribute('data-trigger-selector') || script.getAttribute('data-trigger') || '',
-    resultFieldSelector: script.getAttribute('data-result-field-selector') || script.getAttribute('data-result-field') || '',
-    storageKey: script.getAttribute('data-storage-key') || STORAGE_KEY_DEFAULT,
+    triggerSelector: TRIGGER_SELECTOR,
+    resultFieldSelector: RESULT_FIELD_SELECTOR,
+    storageKey: STORAGE_KEY,
   }
 }
 
@@ -78,14 +74,13 @@ function init(configOverrides = {}) {
   const config = { ...getConfig(), ...configOverrides }
   const { triggerSelector, resultFieldSelector, storageKey } = config
 
-  if (!triggerSelector) {
-    console.warn('Skyteam-wizard: data-trigger-selector not set; wizard will not open on button click.')
-  }
-
   injectModalStyles()
   const modalEl = createModalRoot()
   const mountEl = document.getElementById('skyteam-wizard-mount')
   if (!mountEl) return
+
+  /** When user completes the wizard (Fertig), navigate to this URL if set (from the trigger link). */
+  const pendingNavigation = { href: null }
 
   const saveAndClose = (payload) => {
     try {
@@ -93,6 +88,11 @@ function init(configOverrides = {}) {
     } catch (_) {}
     hideModal(modalEl)
     prefillResultField(resultFieldSelector, storageKey)
+    if (pendingNavigation.href) {
+      const url = pendingNavigation.href
+      pendingNavigation.href = null
+      window.location.href = url
+    }
   }
 
   const app = createApp(App, {
@@ -106,11 +106,16 @@ function init(configOverrides = {}) {
 
   if (triggerSelector) {
     document.querySelectorAll(triggerSelector).forEach((el) => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        showModal(modalEl)
-      })
+      el.addEventListener(
+        'click',
+        (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          pendingNavigation.href = el.href || null
+          showModal(modalEl)
+        },
+        true
+      )
     })
   }
 

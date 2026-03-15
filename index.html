@@ -8,11 +8,11 @@
 <body>
   <h1>Embed-Test</h1>
   <p>
-    <button type="button" data-skyteam-wizard>Kurs-Finder öffnen</button>
+    <a href="https://www.sky-team.de/event/26-allgaeuguiding_02/" class="btn btn-sm booking us-btn-style_5">Buchen</a>
   </p>
   <p>
-    <label>Ergebnis (wird nach „Fertig” gefüllt): <input type="text" name="wizard_result" readonly style="width:100%;max-width:400px" /></label>
+    Ergebnis (wird nach „Fertig” gefüllt): <input id="bemerkungen" type="text"></input>
   </p>
-  <script type="module" src="/src/embed.js" data-trigger-selector="[data-skyteam-wizard]" data-result-field-selector="[name=wizard_result]" data-storage-key="skyteam_wizard_result"></script>
+  <script type="module" src="/src/embed.js"></script>
 </body>
 </html>

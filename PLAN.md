@@ -42,6 +42,7 @@ You can store this in JSON/config files (e.g. `questions.json`, `courses.json`) 
 
 - **Vue 3** (Composition API or Options API – your choice).
 - **Embeddable**: Single Vue app; script-only embed (modal, trigger selector, sessionStorage, form prefill). No need for Vue Router (linear wizard).
+- **Embed config (built-in, not runtime).** The following are hardcoded in the JS at build time and do not change at runtime: (1) **trigger selector** = `a[href*=allgaeu][class~=booking]` (links that open the wizard), (2) **result field selector** = `input#bemerkungen` (field that receives the stored result), (3) **storage key** = `"skyteam_o_mat"` (sessionStorage key for the wizard result). To change them, edit the constants in the source and rebuild.
 - **Build: single JS file, no separate CSS.** Both the default build (`npm run build`) and the embed build (`npm run build:embed`) produce **one JavaScript file** only. All CSS is injected at runtime by the JS (via a plugin), so there is **no additional CSS file** in `dist/` or `dist/assets/`. The host page only needs to include the one script.
 - **Language**: User-facing text is **German**. The primary audience is German-speaking; all content in `questions.json` and `courses.json` (question text, options, labels, course names, descriptions, fallback labels) and any UI strings in the wizard (buttons, verdicts, “practice these skills”) should be in German. Technical keys (e.g. `id`, `skillId`, `type`) stay in English for consistency.
 
