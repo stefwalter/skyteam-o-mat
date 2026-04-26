@@ -3,25 +3,25 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Wie oft startest du Vorwärts, bei Nullwind, oder leicht Rückendwind?",
+      "text": "Wie oft startest du Vorwärts, bei Nullwind, oder leichtem Rückenwind?",
       "type": "multiple_choice",
       "skillId": "forward_launch",
       "options": [
         { "text": "Immer Rückwarts", "score": 0 },
-        { "text": "Ich starte nur Vorärts", "score": 1 },
+        { "text": "Ich starte nur Vorwärts", "score": 1 },
         { "text": "Nur im Winter", "score": 3 },
-        { "text": "Ofters, alle paar Wochen", "score": 5 }
+        { "text": "Öfter, alle paar Wochen", "score": 5 }
       ]
     },
     {
       "id": "q2",
-      "text": "Wie schätzt du dein Kiten bei starkem (20+ kmh) oder böigem Wind ein?",
+      "text": "Wie schätzt du dein Kiten bei starkem (20+ km/h) oder böigem Wind ein?",
       "type": "multiple_choice",
       "skillId": "kiting",
       "options": [
         { "text": "Ich meide starken Wind", "score": 0 },
         { "text": "Mit Aufsicht schaffe ich es", "score": 1 },
-        { "text": "Alleine kiten geht sicher", "score": 2 },
+        { "text": "Allein kiten geht sicher", "score": 2 },
         { "text": "Sicher bei starkem und böigem Wind", "score": 3 }
       ]
     },
@@ -38,50 +38,50 @@
       ]
     },
     {
-        "id": "q4",
-        "text": "Wie oft suchst du einen Peilpunkt, und triffst den innerhablb 10m bei der Landung?",
-        "type": "multiple_choice",
-        "skillId": "punkt_landung",
-        "options": [
-          { "text": "Nein", "score": 0 },
-          { "text": "Manchmal, bei ruhigem Wind", "score": 1 },
-          { "text": "Ja, meistens", "score": 2 },
-          { "text": "Ja, bei verschiedenen Windbedingungen", "score": 3 }
-        ]
-      },
-      {
-        "id": "q5",
-        "text": "Wie machst du einen Starkwind Landung (20+ kmh)?",
-        "type": "multiple_choice",
-        "skillId": "starkwind_landung",
-        "options": [
-          { "text": "Nie gemacht", "score": 0 },
-          { "text": "Mit eine normale Landevolte", "score": 1 },
-          { "text": "Ich achtere bis zum Boden", "score": 2 },
-          { "text": "Achtern an der Position und einen normalen Endanflug", "score": 3 }
-        ]
-      },
-      {
-        "id": "q6",
-        "text": "Wie oft läufst du, oder machst mehr als 30 minuten Kardio-Training?",
-        "type": "likert",
-        "skillId": "fitness_cardio",
-        "scoreMultiplier": 1,
-        "scale": [
-            { "label": "Nie", "value": -3 },
-            { "label": "Kaum", "value": -1 },
-            { "label": "Einmal im Monat", "value": 0 },
-            { "label": "Wochentlich", "value": 1 },
-            { "label": "Mehrmals pro Woche", "value": 3 }
-        ]
+      "id": "q4",
+      "text": "Wie oft suchst du einen Zielpunkt, und triffst den innerhalb von 10 m bei der Landung?",
+      "type": "multiple_choice",
+      "skillId": "punkt_landung",
+      "options": [
+        { "text": "Nein", "score": 0 },
+        { "text": "Manchmal, bei ruhigem Wind", "score": 1 },
+        { "text": "Ja, meistens", "score": 2 },
+        { "text": "Ja, bei verschiedenen Windbedingungen", "score": 3 }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "Wie machst du eine Landung bei Starkwind (20+ km/h)?",
+      "type": "multiple_choice",
+      "skillId": "starkwind_landung",
+      "options": [
+        { "text": "Nie gemacht", "score": 0 },
+        { "text": "Mit einer normalen Landevolte", "score": 1 },
+        { "text": "Ich kreise achtern bis zum Boden", "score": 2 },
+        { "text": "Achtern in Position, mit normalem Endanflug", "score": 3 }
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "Wie oft läufst du, oder machst du mehr als 30 Minuten Kardio-Training?",
+      "type": "likert",
+      "skillId": "fitness_cardio",
+      "scoreMultiplier": 1,
+      "scale": [
+        { "label": "Nie", "value": -3 },
+        { "label": "Kaum", "value": -1 },
+        { "label": "Einmal im Monat", "value": 0 },
+        { "label": "Wochentlich", "value": 1 },
+        { "label": "Mehrmals pro Woche", "value": 3 }
+      ]
     },
     {
       "id": "q7",
-      "text": "Wie viele Berge touren über 1000 Höhenmeter pro Tag hast du bereits gemacht?",
+      "text": "Wie viele Bergtouren über 1000 Höhenmeter pro Tag hast du bereits gemacht?",
       "type": "numerical",
       "skillId": "fitness_mountain",
       "scoreMultiplier": 0.5,
-      "hint": "Gib eine Zahl ein (z. B. 0, 5, 20). Zähle Berge wo du über 1000 Höhenmeter gestiegen bist."
+      "hint": "Gib eine Zahl ein (z. B. 0, 5, 20). Zähle Bergtouren, bei denen du über 1000 Höhenmeter pro Tour gestiegen bist."
     }
   ]
 }
