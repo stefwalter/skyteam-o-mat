@@ -9,9 +9,9 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name][extname]',
+        entryFileNames: 'assets/skyteam-o-mat-[name].js',
+        chunkFileNames: 'assets/skyteam-o-mat-[name].js',
+        assetFileNames: 'assets/skyteam-o-mat-[name][extname]',
       },
     },
   },
