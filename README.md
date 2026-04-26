@@ -1,35 +1,35 @@
 # Skyteam-o-mat – Kurs-Finder Wizard
 
-Ein Vue-3-Wizard zur Einschätzung, ob ein Gleitschirm-Kurs oder eine Tour zum Kenntnisstand der Teilnehmer passt. Als **einzelnes JavaScript** auf beliebigen Seiten einbindbar: Klick auf einen konfigurierbaren Button öffnet den Wizard als **Modal-Popup**. Am Ende werden die Ergebnisse in **sessionStorage** gespeichert und optional in ein konfigurierbares **Formularfeld** geschrieben.
+Ein Vue-3-Wizard zur Einschätzung, ob ein Gleitschirm-Kurs oder eine Tour zum Kenntnisstand der Teilnehmer passt. Als **einzelnes JavaScript** auf beliebigen Seiten einbindbar (oder über das **WordPress-Plugin**): Klick auf die im Embed festgelegten Trigger-Elemente öffnet den Wizard als **Modal-Popup**. Am Ende werden die Ergebnisse in **sessionStorage** gespeichert und in das im Embed konfigurierte **Formularfeld** geschrieben (siehe `src/embed.js` / `PLAN.md`).
 
 ## Einbindung (Produktion)
 
-1. **Embed-Build erzeugen:** `npm run build:embed`  
-   → Erzeugt **eine** Datei: `dist/skyteam-wizard.js` (inkl. CSS, Vue, Fragen/Kurse).
+### Statische Seite / beliebiges CMS
 
-2. **Auf der Zielseite:** Einen Button mit dem gewünschten Selektor setzen und das Script inkludieren (ohne `type="module"`):
+1. **Embed-Build erzeugen:** `npm run build:embed`  
+   → **eine** Datei: `dist/skyteam-wizard.js` (inkl. CSS, Vue, Fragen/Kurse).
+
+2. **Auf der Zielseite** nur dieses Script einbinden (**ohne** `type="module"`). Trigger, Ergebnisfeld und sessionStorage-Key sind **fest im Build** hinterlegt (Konstanten in `src/embed.js`); zum Ändern Quelle anpassen und neu bauen.
 
 ```html
-<button type="button" data-skyteam-wizard>Kurs-Finder öffnen</button>
-
-<!-- Optional: verstecktes oder sichtbares Feld für das Wizard-Ergebnis -->
-<input type="hidden" name="wizard_result" />
-
-<script src="/pfad/zu/skyteam-wizard.js"
-  data-trigger-selector="[data-skyteam-wizard]"
-  data-result-field-selector="[name=wizard_result]"
-  data-storage-key="skyteam_wizard_result"></script>
+<script src="/pfad/zu/skyteam-wizard.js"></script>
 ```
 
-**Data-Attribute am Script-Tag:**
+**Aktuelles Standard-Verhalten** (siehe auch `PLAN.md`):
 
-| Attribut | Bedeutung |
-|----------|-----------|
-| `data-trigger-selector` | CSS-Selektor für den Button, der den Wizard öffnet (Klick wird abgefangen). |
-| `data-result-field-selector` | Optional. CSS-Selektor für ein Feld (z. B. `input`/`textarea`); wird mit dem gespeicherten Ergebnis (JSON-String) gefüllt. |
-| `data-storage-key` | Optional. sessionStorage-Schlüssel (Standard: `skyteam_wizard_result`). |
+| Aspekt | Wert (in `src/embed.js`) |
+|--------|---------------------------|
+| Trigger | z. B. Buchungs-Links `a[href*=allgaeu][class~=booking]` |
+| Ergebnisfeld | `input#bemerkungen` |
+| sessionStorage-Key | `skyteam_o_mat` |
 
-Nach Klick auf „Fertig“ im Wizard: Ergebnis wird unter dem angegebenen Key in sessionStorage gespeichert und, falls `data-result-field-selector` gesetzt ist, in das gefundene Element in `value` geschrieben. Das gespeicherte Objekt enthält u. a. `courseId`, `courseName`, `meetsThreshold`, `fallbackLabel`, `fallbackUrl`, `missingSkillNames`, `completedAt`.
+Nach „Fertig“: Ergebnis unter diesem Key in sessionStorage und das Ergebnisfeld mit dem JSON-String befüllt (sofern das Element existiert). Inhalt u. a. `courseId`, `courseName`, `meetsThreshold`, `fallbackLabel`, `fallbackUrl`, `missingSkillNames`, `completedAt`.
+
+### WordPress
+
+1. **`npm run build:wp`** baut das gleiche Embed-Bundle nach `wordpress/skyteam-o-mat/assets/skyteam-wizard.js` und erzeugt **`skyteam-o-mat-wp-plugin.zip`** im Projektroot.
+2. In WordPress: **Plugins → Installieren → Plugin hochladen** mit der Zip, oder den Ordner `wordpress/skyteam-o-mat` nach `wp-content/plugins/` kopieren und das Plugin **Skyteam-o-mat** aktivieren.
+3. **Einbindung:** Das Plugin registriert das Script für das Frontend (siehe `skyteam-o-mat.php`). Über den Filter `skyteam_o_mat_enqueue_script` kann das Laden global abgeschaltet werden; dann Shortcode **`[skyteam_o_mat]`** auf die gewünschten Seiten setzen, damit das Script geladen wird.
 
 ## Entwicklung
 
@@ -51,7 +51,8 @@ Unit-Tests für die Scoring-Logik (`src/composables/useScoring.js`). Watch-Modus
 ## Weitere Builds
 
 - **`npm run build`** – Standard-Vite-Build (z. B. für eine eigene Demo-Seite mit `index.html` und getrennten Assets).
-- **`npm run build:embed`** – Einzeldatei für die Script-Einbindung (IIFE, CSS im JS, siehe oben).
+- **`npm run build:embed`** – Einzeldatei für die Script-Einbindung (IIFE, CSS im JS) → `dist/skyteam-wizard.js`.
+- **`npm run build:wp`** – gleicher Embed-Lib-Build für das WordPress-Plugin → `wordpress/skyteam-o-mat/assets/skyteam-wizard.js` und **`skyteam-o-mat-wp-plugin.zip`** (benötigt das Kommandozeilen-Tool **`zip`**).
 
 ## Konfiguration (Daten)
 
