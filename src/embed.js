@@ -6,6 +6,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
+/** Injected at build time from package.json "version" (vite.embed.config.js). */
+const SKYTEAM_O_MAT_VERSION = __SKYTEAM_O_MAT_VERSION__
+console.log('SkyTeam-o-mat:', SKYTEAM_O_MAT_VERSION)
+
 /** Built-in config (baked in at build time; not configurable at runtime). */
 const TRIGGER_SELECTOR = 'a[href*=hike-fly-woche][class~=booking]'
 const RESULT_FIELD_SELECTOR = 'input#bemerkungen'
@@ -51,6 +55,7 @@ function createModalRoot() {
 }
 
 function showModal(modalEl) {
+  console.log('SkyTeam-o-mat: wizard started')
   modalEl.classList.add('is-open')
   document.body.style.overflow = 'hidden'
 }
@@ -66,7 +71,10 @@ function prefillResultField(selector, storageKey) {
     const raw = sessionStorage.getItem(storageKey)
     if (!raw) return
     const el = document.querySelector(selector)
-    if (el && 'value' in el) el.value = raw
+    if (el && 'value' in el) {
+      el.value = raw
+      console.log('SkyTeam-o-mat: result field filled', selector)
+    }
   } catch (_) {}
 }
 
