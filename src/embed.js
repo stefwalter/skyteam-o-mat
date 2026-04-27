@@ -7,7 +7,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 /** Built-in config (baked in at build time; not configurable at runtime). */
-const TRIGGER_SELECTOR = 'a[href*=allgaeu][class~=booking]'
+const TRIGGER_SELECTOR = 'a[href*=hike-fly-woche][class~=booking]'
 const RESULT_FIELD_SELECTOR = 'input#bemerkungen'
 const STORAGE_KEY = 'skyteam_o_mat'
 

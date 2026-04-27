@@ -19,7 +19,7 @@ Ein Vue-3-Wizard zur Einschätzung, ob ein Gleitschirm-Kurs oder eine Tour zum K
 
 | Aspekt | Wert (in `src/embed.js`) |
 |--------|---------------------------|
-| Trigger | z. B. Buchungs-Links `a[href*=allgaeu][class~=booking]` |
+| Trigger | z. B. Buchungs-Links `a[href*=hike-fly-woche][class~=booking]` |
 | Ergebnisfeld | `input#bemerkungen` |
 | sessionStorage-Key | `skyteam_o_mat` |
 
