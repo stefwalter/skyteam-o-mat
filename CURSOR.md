@@ -17,7 +17,7 @@ Use this file as shared context and conventions for the Skyteam-o-mat project.
 - **Stack**: Vue 3, Vite. No Vue Router (linear wizard).
 - **Embed (Produktion)**: Ein **einziges IIFE-Script** mit Vue, allen Komponenten und **CSS im JS** (kein separates Stylesheet). Zwei Wege, es zu erzeugen:
   - **`npm run build:embed`** → `dist/skyteam-wizard.js` (Ausgabe unter `dist/`, Ordner ist gitignored).
-  - **`npm run build:wp`** → `wordpress/skyteam-o-mat/assets/skyteam-wizard.js` und **`skyteam-o-mat-wp-plugin.zip`** im Projektroot (installierbares WordPress-Plugin).
+  - **`npm run build:wp`** → schreibt die Version aus `package.json` nach `skyteam-o-mat.php`, baut `wordpress/skyteam-o-mat/assets/skyteam-wizard.js`, legt **`skyteam-o-mat-wp-plugin-v<version>.zip`** im Projektroot an (`scripts/sync-wp-version.mjs`, `scripts/zip-wp-plugin.mjs`).
 - **WordPress**: Ordner `wordpress/skyteam-o-mat/` mit `skyteam-o-mat.php` – registriert dasselbe Embed-Bundle. Siehe README.
 - **Modal**: Der Wizard erscheint als **Popup-Modal**. Trigger, Ergebnisfeld und sessionStorage-Key sind im Embed **fest in `src/embed.js`** verdrahtet (nicht per Data-Attribute); siehe **PLAN.md** und README.
 - **Ergebnis**: Beim Klick auf „Fertig“: sessionStorage + optionales Befüllen des Zielfelds laut den eingebauten Selektoren.

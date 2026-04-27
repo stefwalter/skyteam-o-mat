@@ -27,7 +27,7 @@ Nach „Fertig“: Ergebnis unter diesem Key in sessionStorage und das Ergebnisf
 
 ### WordPress
 
-1. **`npm run build:wp`** baut das gleiche Embed-Bundle nach `wordpress/skyteam-o-mat/assets/skyteam-wizard.js` und erzeugt **`skyteam-o-mat-wp-plugin.zip`** im Projektroot.
+1. **`npm run build:wp`** schreibt die Plugin-Version aus `package.json` in `wordpress/skyteam-o-mat/skyteam-o-mat.php`, baut das Embed-Bundle nach `wordpress/skyteam-o-mat/assets/skyteam-wizard.js` und erzeugt im Projektroot eine Zip **`skyteam-o-mat-wp-plugin-v` + gleiche Version + `.zip`** (siehe `scripts/sync-wp-version.mjs` und `scripts/zip-wp-plugin.mjs`).
 2. In WordPress: **Plugins → Installieren → Plugin hochladen** mit der Zip, oder den Ordner `wordpress/skyteam-o-mat` nach `wp-content/plugins/` kopieren und das Plugin **Skyteam-o-mat** aktivieren.
 3. **Einbindung:** Das Plugin registriert das Script für das Frontend (siehe `skyteam-o-mat.php`). Über den Filter `skyteam_o_mat_enqueue_script` kann das Laden global abgeschaltet werden; dann Shortcode **`[skyteam_o_mat]`** auf die gewünschten Seiten setzen, damit das Script geladen wird.
 
@@ -52,7 +52,7 @@ Unit-Tests für die Scoring-Logik (`src/composables/useScoring.js`). Watch-Modus
 
 - **`npm run build`** – Standard-Vite-Build (z. B. für eine eigene Demo-Seite mit `index.html` und getrennten Assets).
 - **`npm run build:embed`** – Einzeldatei für die Script-Einbindung (IIFE, CSS im JS) → `dist/skyteam-wizard.js`.
-- **`npm run build:wp`** – gleicher Embed-Lib-Build für das WordPress-Plugin → `wordpress/skyteam-o-mat/assets/skyteam-wizard.js` und **`skyteam-o-mat-wp-plugin.zip`** (benötigt das Kommandozeilen-Tool **`zip`**).
+- **`npm run build:wp`** – Version aus `package.json` ins PHP-Plugin übernehmen, Embed-Lib-Build → `wordpress/skyteam-o-mat/assets/skyteam-wizard.js`, dann versionierte Plugin-Zip im Projektroot (benötigt **`zip`**).
 
 ## Konfiguration (Daten)
 

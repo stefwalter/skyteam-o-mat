@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "build:embed": "vite build --config vite.embed.config.js",
-    "build:wp": "vite build --config vite.wordpress.config.js && VERSION=$(node -e \"console.log(require('./package.json').version)\") && rm -f \"skyteam-o-mat-wp-plugin-v${VERSION}.zip\" skyteam-o-mat-wp-plugin.zip && (cd wordpress && zip -r \"../skyteam-o-mat-wp-plugin-v${VERSION}.zip\" skyteam-o-mat)",
+    "build:wp": "node scripts/sync-wp-version.mjs && vite build --config vite.wordpress.config.js && node scripts/zip-wp-plugin.mjs",
+    "sync:wp-version": "node scripts/sync-wp-version.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
