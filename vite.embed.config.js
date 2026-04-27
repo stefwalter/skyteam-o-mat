@@ -3,6 +3,10 @@ import vue from '@vitejs/plugin-vue'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig({
+  /** Vue runtime references `process.env.NODE_ENV`; browsers have no `process` unless replaced. */
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('production'),
+  },
   plugins: [vue(), cssInjectedByJsPlugin()],
   build: {
     outDir: 'dist',
