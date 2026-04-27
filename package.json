@@ -1,13 +1,13 @@
 {
   "name": "skyteam-o-mat",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build:embed": "vite build --config vite.embed.config.js",
-    "build:wp": "vite build --config vite.wordpress.config.js && rm -f skyteam-o-mat-wp-plugin.zip && (cd wordpress && zip -r ../skyteam-o-mat-wp-plugin.zip skyteam-o-mat)",
+    "build:wp": "vite build --config vite.wordpress.config.js && VERSION=$(node -e \"console.log(require('./package.json').version)\") && rm -f \"skyteam-o-mat-wp-plugin-v${VERSION}.zip\" skyteam-o-mat-wp-plugin.zip && (cd wordpress && zip -r \"../skyteam-o-mat-wp-plugin-v${VERSION}.zip\" skyteam-o-mat)",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
