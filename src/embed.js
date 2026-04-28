@@ -34,7 +34,7 @@ function injectModalStyles() {
     .skyteam-wizard-modal { position: fixed; inset: 0; z-index: 999999; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); font-family: system-ui, sans-serif; }
     .skyteam-wizard-modal.is-open { display: flex; }
     .skyteam-wizard-modal__backdrop { position: absolute; inset: 0; }
-    .skyteam-wizard-modal__box { position: relative; max-width: 36rem; max-height: 90vh; overflow: auto; margin: 1rem; background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .skyteam-wizard-modal__box { position: relative; width: min(36rem, calc(100vw - 2rem)); max-height: 90vh; overflow: auto; margin: 1rem; background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
     .skyteam-wizard-modal__close { position: absolute; top: 0.5rem; right: 0.5rem; width: 2rem; height: 2rem; padding: 0; border: none; background: transparent; cursor: pointer; font-size: 1.5rem; line-height: 1; color: #666; z-index: 1; }
     .skyteam-wizard-modal__close:hover { color: #333; }
   `
