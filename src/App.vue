@@ -68,6 +68,7 @@ const result = computed(() => {
 })
 
 const showResult = ref(false)
+const showIntro = ref(true)
 
 function loadState() {
   try {
@@ -83,6 +84,7 @@ function resetToFirstQuestion() {
   answers.value = {}
   stepIndex.value = 0
   showResult.value = false
+  showIntro.value = true
   saveState()
 }
 
@@ -113,11 +115,19 @@ function next() {
   saveState()
 }
 
+function startQuestions() {
+  showIntro.value = false
+  stepIndex.value = 0
+  saveState()
+}
+
 function back() {
-  if (stepIndex.value > 0) {
-    stepIndex.value -= 1
-  } else if (showResult.value) {
+  if (showResult.value) {
     showResult.value = false
+  } else if (stepIndex.value > 0) {
+    stepIndex.value -= 1
+  } else if (!showIntro.value) {
+    showIntro.value = true
   }
   saveState()
 }
@@ -164,19 +174,34 @@ onUnmounted(() => {
 
       <!-- Wizard steps -->
       <WizardSteps
-        v-if="selectedCourseId && !showResult && currentQuestion"
+        v-if="selectedCourseId && !showResult && !showIntro && currentQuestion"
         :question="currentQuestion"
         :progress-label="progressLabel"
         :model-value="answers[currentQuestion?.id]"
         :can-go-next="canGoNext"
         :is-last-step="isLastStep"
-        :has-back="stepIndex > 0"
+        :has-back="true"
         :show-change-course="stepIndex === 0 && courses.length > 1"
         @update:model-value="(v) => currentQuestion && setAnswer(currentQuestion.id, v)"
         @next="next"
         @back="back"
-        @change-course="selectedCourseId = null; saveState()"
+        @change-course="showIntro = true; selectedCourseId = null; saveState()"
       />
+
+      <section
+        v-if="selectedCourseId && !showResult && showIntro"
+        class="intro-screen wizard-section"
+        aria-label="Einführung"
+      >
+        <h2 class="wizard-title">Buchungs Fragebogen</h2>
+        <p class="intro-text">
+          Wir möchten dir einige Fragen stellen, um deine Fähigkeiten und Erfahrungen besser einschätzen
+          zu können.
+        </p>
+        <div class="intro-actions">
+          <button type="button" class="btn btn-next" @click="startQuestions">Weiter</button>
+        </div>
+      </section>
 
       <!-- Result -->
       <ResultScreen
@@ -242,5 +267,28 @@ onUnmounted(() => {
   color: #555;
   margin-top: 0.25rem;
   display: block;
+}
+.intro-text {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.intro-actions {
+  display: flex;
+}
+.btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid #0a7ea4;
+  background: #0a7ea4;
+  color: #fff;
+}
+.btn-next {
+  margin-left: auto;
+}
+.btn-next:hover {
+  background: #086a8a;
+  border-color: #086a8a;
 }
 </style>
