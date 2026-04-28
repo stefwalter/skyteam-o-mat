@@ -221,7 +221,7 @@ onUnmounted(() => {
   width: 100%;
   max-width: 36rem;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 1rem 0rem 1rem;
   font-family: system-ui, sans-serif;
 }
 .wizard-loading {
@@ -272,6 +272,9 @@ onUnmounted(() => {
 .intro-text {
   margin-bottom: 1rem;
   line-height: 1.5;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  font-weight: bold;
 }
 .intro-actions {
   display: flex;
