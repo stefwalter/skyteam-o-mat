@@ -34,10 +34,7 @@ function cancelBooking() {
     <h2 class="result-title">Ergebnis für {{ course.name }}</h2>
 
     <div v-if="result.meetsThreshold" class="verdict verdict-ok">
-      <p><strong>Dieser Kurs passt zu dir.</strong></p>
-      <p v-if="course.url" class="link-wrap">
-        <a :href="course.url" class="link">Zum Kurs</a>
-      </p>
+      <p><strong>Super. Dieser Kurs könnte ihre Fähigkeiten gut passen.</strong></p>
     </div>
     <div v-else class="verdict verdict-suggest">
       <p><strong>Wir empfehlen zuerst einen einfacheren Kurs.</strong></p>
@@ -109,9 +106,6 @@ function cancelBooking() {
 }
 .verdict p:last-child {
   margin-bottom: 0;
-}
-.link-wrap {
-  margin-top: 0.5rem;
 }
 .link {
   color: #0a7ea4;
