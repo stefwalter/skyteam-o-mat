@@ -4,8 +4,8 @@ const props = defineProps({
   result: { type: Object, required: true },
   skillNames: { type: Object, default: () => ({}) },
   onComplete: { type: Function, default: null },
+  onCancelBooking: { type: Function, default: null },
 })
-const emit = defineEmits(['restart'])
 
 function getCompletionPayload() {
   const missingSkillNames = (props.result.missingSkills || []).map((s) => props.skillNames[s.id] ?? s.id)
@@ -24,6 +24,10 @@ function getCompletionPayload() {
 
 function finish() {
   if (props.onComplete) props.onComplete(getCompletionPayload())
+}
+
+function cancelBooking() {
+  if (props.onCancelBooking) props.onCancelBooking(getCompletionPayload())
 }
 </script>
 
@@ -60,12 +64,22 @@ function finish() {
     </p>
     -->
 
-    <div class="result-actions">
-      <button v-if="onComplete" type="button" class="btn btn-primary" @click="finish">
-        Fertig
+    <div v-if="onComplete || onCancelBooking" class="result-actions">
+      <button
+        v-if="onComplete"
+        type="button"
+        class="btn btn-primary"
+        @click="finish"
+      >
+        {{ result.meetsThreshold ? 'Buchen' : 'Trotzdem buchen' }}
       </button>
-      <button type="button" class="btn btn-restart" @click="emit('restart')">
-        Von vorn starten
+      <button
+        v-if="onCancelBooking"
+        type="button"
+        class="btn btn-cancel"
+        @click="cancelBooking"
+      >
+        Abbrechen
       </button>
     </div>
   </section>
@@ -124,15 +138,6 @@ function finish() {
   color: #666;
   margin-bottom: 1rem;
 }
-.btn-restart {
-  padding: 0.6rem 1.25rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  border: 2px solid #666;
-  background: #fff;
-  color: #333;
-}
 .result-actions {
   display: flex;
   gap: 0.75rem;
@@ -151,7 +156,16 @@ function finish() {
   background: #086a8a;
   border-color: #086a8a;
 }
-.btn-restart:hover {
+.btn-cancel {
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid #666;
+  background: #fff;
+  color: #333;
+}
+.btn-cancel:hover {
   background: #f5f5f5;
 }
 </style>

@@ -9,6 +9,7 @@ import coursesData from '../courses.json'
 
 defineProps({
   onComplete: { type: Function, default: null },
+  onCancelBooking: { type: Function, default: null },
 })
 
 const questions = questionsData.questions
@@ -115,14 +116,6 @@ function back() {
   saveState()
 }
 
-function restart() {
-  selectedCourseId.value = null
-  answers.value = {}
-  stepIndex.value = 0
-  showResult.value = false
-  saveState()
-}
-
 onMounted(() => {
   loading.value = false
   loadState()
@@ -179,7 +172,7 @@ onMounted(() => {
         :result="result"
         :skill-names="Object.fromEntries(skills.map((s) => [s.id, s.name]))"
         :on-complete="onComplete"
-        @restart="restart"
+        :on-cancel-booking="onCancelBooking"
       />
     </template>
   </div>

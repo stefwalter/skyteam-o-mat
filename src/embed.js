@@ -87,24 +87,27 @@ function init(configOverrides = {}) {
   const mountEl = document.getElementById('skyteam-wizard-mount')
   if (!mountEl) return
 
-  /** When user completes the wizard (Fertig), navigate to this URL if set (from the trigger link). */
+  /** Booking URL from the trigger link when the modal was opened. */
   const pendingNavigation = { href: null }
 
-  const saveAndClose = (payload) => {
+  function finalizeWizard(payload, { navigate }) {
     try {
       sessionStorage.setItem(storageKey, typeof payload === 'string' ? payload : JSON.stringify(payload))
     } catch (_) {}
     hideModal(modalEl)
     prefillResultField(resultFieldSelector, storageKey)
-    if (pendingNavigation.href) {
+    if (navigate && pendingNavigation.href) {
       const url = pendingNavigation.href
       pendingNavigation.href = null
       window.location.href = url
+    } else {
+      pendingNavigation.href = null
     }
   }
 
   const app = createApp(App, {
-    onComplete: saveAndClose,
+    onComplete: (p) => finalizeWizard(p, { navigate: true }),
+    onCancelBooking: (p) => finalizeWizard(p, { navigate: false }),
   })
   app.mount(mountEl)
 

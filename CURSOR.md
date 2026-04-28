@@ -20,7 +20,7 @@ Use this file as shared context and conventions for the Skyteam-o-mat project.
   - **`npm run build:wp`** → schreibt die Version aus `package.json` nach `skyteam-o-mat.php`, baut `wordpress/skyteam-o-mat/assets/skyteam-wizard.js`, legt **`skyteam-o-mat-wp-plugin-v<version>.zip`** im Projektroot an (`scripts/sync-wp-version.mjs`, `scripts/zip-wp-plugin.mjs`).
 - **WordPress**: Ordner `wordpress/skyteam-o-mat/` mit `skyteam-o-mat.php` – registriert dasselbe Embed-Bundle. Siehe README.
 - **Modal**: Der Wizard erscheint als **Popup-Modal**. Trigger, Ergebnisfeld und sessionStorage-Key sind im Embed **fest in `src/embed.js`** verdrahtet (nicht per Data-Attribute); siehe **PLAN.md** und README.
-- **Ergebnis**: Beim Klick auf „Fertig“: sessionStorage + optionales Befüllen des Zielfelds laut den eingebauten Selektoren.
+- **Ergebnis**: Nach **Buchen** / **Trotzdem buchen** oder **Abbrechen**: sessionStorage + optionales Befüllen des Zielfelds; Navigation zur Buchungs-URL nur bei Buchen / Trotzdem buchen.
 - **Data**: Questions and courses are in **`questions.json`** and **`courses.json`** at the project root; bundled at build time.
 - **Plan**: Full logic and data model in **`PLAN.md`**.
 
@@ -51,7 +51,7 @@ Use this file as shared context and conventions for the Skyteam-o-mat project.
 | `src/App.vue` | Root: data load, course selector, step index, answers, result; sessionStorage persistence. |
 | `src/composables/useScoring.js` | `computeSkillScores()`, `evaluateCourse()` – used for result. |
 | `src/components/WizardSteps.vue` | Renders current question (multiple_choice, likert, numerical, text_input), progress, next/back, “Kurs wechseln”. |
-| `src/components/ResultScreen.vue` | Verdict (suitable / recommend fallback), missing-skills list, score note, “Von vorn starten”. |
+| `src/components/ResultScreen.vue` | Verdict (suitable / recommend fallback), missing-skills list, Buchen / Trotzdem buchen / Abbrechen. |
 | `src/embed.js` | Script-only Embed: Modal, Trigger, Feld, Storage-Key; Einstieg für `build:embed` / `build:wp`. |
 | `vite.embed.config.js` | Vite-Lib-Build → IIFE `skyteam-wizard.js` (Standard-Ziel: `dist/`). |
 | `vite.wordpress.config.js` | Gleicher Lib-Build, Ausgabe in `wordpress/skyteam-o-mat/assets/`. |
