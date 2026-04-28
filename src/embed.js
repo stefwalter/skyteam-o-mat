@@ -54,10 +54,14 @@ function createModalRoot() {
   return el
 }
 
+/** Dispatched on `window` when the booking trigger opens the modal; App resets to question 1. */
+const WIZARD_OPEN_EVENT = 'skyteam-o-mat:open'
+
 function showModal(modalEl) {
   console.log('SkyTeam-o-mat: wizard started')
   modalEl.classList.add('is-open')
   document.body.style.overflow = 'hidden'
+  window.dispatchEvent(new CustomEvent(WIZARD_OPEN_EVENT))
 }
 
 function hideModal(modalEl) {

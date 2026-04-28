@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import WizardSteps from './components/WizardSteps.vue'
 import ResultScreen from './components/ResultScreen.vue'
 import { computeSkillScores, evaluateCourse } from './composables/useScoring'
@@ -75,9 +75,15 @@ function loadState() {
     if (!raw) return
     const data = JSON.parse(raw)
     if (data.courseId) selectedCourseId.value = data.courseId
-    if (data.answers && typeof data.answers === 'object') answers.value = { ...data.answers }
-    if (typeof data.stepIndex === 'number') stepIndex.value = Math.min(data.stepIndex, orderedQuestions.value.length - 1)
+    // Do not restore stepIndex or answers — each load starts at the first question.
   } catch (_) {}
+}
+
+function resetToFirstQuestion() {
+  answers.value = {}
+  stepIndex.value = 0
+  showResult.value = false
+  saveState()
 }
 
 function saveState() {
@@ -116,12 +122,19 @@ function back() {
   saveState()
 }
 
+const WIZARD_OPEN_EVENT = 'skyteam-o-mat:open'
+
 onMounted(() => {
   loading.value = false
   loadState()
   if (!selectedCourseId.value && courses.length === 1) {
     selectedCourseId.value = courses[0].id
   }
+  window.addEventListener(WIZARD_OPEN_EVENT, resetToFirstQuestion)
+})
+
+onUnmounted(() => {
+  window.removeEventListener(WIZARD_OPEN_EVENT, resetToFirstQuestion)
 })
 </script>
 
