@@ -118,7 +118,7 @@ function cancelBooking() {
   margin-bottom: 1rem;
 }
 .missing-skills h3 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 .missing-skills ul {

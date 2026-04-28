@@ -117,7 +117,7 @@ const emit = defineEmits(['update:modelValue', 'next', 'back', 'changeCourse'])
   margin-bottom: 1rem;
 }
 .question-text {
-  font-size: 1.1rem;
+  font-size: 1.5em;
   margin-bottom: 1rem;
   line-height: 1.4;
 }
