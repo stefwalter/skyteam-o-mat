@@ -61,20 +61,20 @@ function cancelBooking() {
 
     <div v-if="onComplete || onCancelBooking" class="result-actions">
       <button
-        v-if="onComplete"
-        type="button"
-        class="btn btn-primary"
-        @click="finish"
-      >
-        {{ result.meetsThreshold ? 'Buchen' : 'Trotzdem buchen' }}
-      </button>
-      <button
         v-if="onCancelBooking"
         type="button"
         class="btn btn-cancel"
         @click="cancelBooking"
       >
         Abbrechen
+      </button>
+      <button
+        v-if="onComplete"
+        type="button"
+        class="btn btn-primary"
+        @click="finish"
+      >
+        {{ result.meetsThreshold ? 'Buchen' : 'Trotzdem buchen' }}
       </button>
     </div>
   </section>
@@ -136,6 +136,7 @@ function cancelBooking() {
   flex-wrap: wrap;
 }
 .btn-primary {
+  margin-left: auto;
   padding: 0.6rem 1.25rem;
   font-size: 1rem;
   border-radius: 6px;

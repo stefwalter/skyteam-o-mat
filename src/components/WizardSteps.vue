@@ -177,7 +177,7 @@ const emit = defineEmits(['update:modelValue', 'next', 'back', 'changeCourse'])
   display: flex;
   gap: 0.75rem;
   margin-top: 1.5rem;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .btn {
   padding: 0.6rem 1.25rem;
@@ -199,6 +199,9 @@ const emit = defineEmits(['update:modelValue', 'next', 'back', 'changeCourse'])
 }
 .btn-back:hover:not(:disabled) {
   background: #f5f5f5;
+}
+.btn-next {
+  margin-left: auto;
 }
 .btn-next:hover:not(:disabled) {
   background: #086a8a;
