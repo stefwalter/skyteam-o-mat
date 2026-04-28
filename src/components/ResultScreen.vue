@@ -13,8 +13,6 @@ function getCompletionPayload() {
     courseId: props.course.id,
     courseName: props.course.name,
     meetsThreshold: props.result.meetsThreshold,
-    fallbackLabel: props.result.fallbackLabel ?? null,
-    fallbackUrl: props.result.fallbackUrl ?? null,
     missingSkillNames,
     weightedScore: props.result.weightedScore,
     threshold: props.result.threshold,
