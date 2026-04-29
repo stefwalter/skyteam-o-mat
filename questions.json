@@ -7,19 +7,19 @@
       "type": "multiple_choice",
       "skillId": "forward_launch",
       "options": [
-        { "text": "Immer Rückwarts", "score": 0 },
-        { "text": "Ich starte nur Vorwärts", "score": 1 },
+        { "text": "Immer rückwarts", "score": 0 },
+        { "text": "Ich starte nur vorwärts", "score": 1 },
         { "text": "Nur im Winter", "score": 3 },
-        { "text": "Öfter, alle paar Wochen", "score": 5 }
+        { "text": "Ofters, alle paar Wochen", "score": 5 }
       ]
     },
     {
       "id": "q2",
-      "text": "Wie schätzt du dein Kiten bei starkem (20+ km/h) oder böigem Wind ein?",
+      "text": "Wie schätzt du deinen Kiten bei starkem (20+ km/h) oder böigem Wind ein?",
       "type": "multiple_choice",
       "skillId": "kiting",
       "options": [
-        { "text": "Ich meide starken Wind", "score": 0 },
+        { "text": "Ich meide starkem Wind", "score": 0 },
         { "text": "Mit Aufsicht schaffe ich es", "score": 1 },
         { "text": "Allein kiten geht sicher", "score": 2 },
         { "text": "Sicher bei starkem und böigem Wind", "score": 3 }
@@ -39,7 +39,7 @@
     },
     {
       "id": "q4",
-      "text": "Wie oft suchst du einen Zielpunkt, und triffst den innerhalb von 10 m bei der Landung?",
+      "text": "Wie oft suchst du einen Peilpunkt, und triffst den innerhalb von 10 m bei der Landung?",
       "type": "multiple_choice",
       "skillId": "punkt_landung",
       "options": [
@@ -58,7 +58,7 @@
         { "text": "Nie gemacht", "score": 0 },
         { "text": "Mit einer normalen Landevolte", "score": 1 },
         { "text": "Ich kreise achtern bis zum Boden", "score": 2 },
-        { "text": "Achtern in Position, mit normalem Endanflug", "score": 3 }
+        { "text": "Achtern an der Position, mit normalem Endanflug", "score": 3 }
       ]
     },
     {

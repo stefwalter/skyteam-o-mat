@@ -274,7 +274,6 @@ onUnmounted(() => {
   line-height: 1.5;
   padding-top: 3rem;
   padding-bottom: 4rem;
-  font-weight: bold;
 }
 .intro-actions {
   display: flex;

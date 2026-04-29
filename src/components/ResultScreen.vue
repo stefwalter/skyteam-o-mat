@@ -34,7 +34,7 @@ function cancelBooking() {
     <h2 class="result-title">Ergebnis für {{ course.name }}</h2>
 
     <div v-if="result.meetsThreshold" class="verdict verdict-ok">
-      <p><strong>Super. Dieser Kurs könnte ihre Fähigkeiten gut passen.</strong></p>
+      <p><strong>Super. Dieser Kurs könnte ihre Fähigkeiten passen.</strong></p>
     </div>
     <div v-else class="verdict verdict-suggest">
       <p><strong>Wir empfehlen zuerst einen einfacheren Kurs.</strong></p>
