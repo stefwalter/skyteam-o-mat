@@ -36,6 +36,7 @@ export function computeSkillScores(answers, questions, questionsById, questionOr
 }
 
 /**
+ * Combined score is Σ(skillScore × weight). Skills not listed in `course.weights` use weight 1; explicit 0 still applies.
  * @param {Record<string, number>} skillScores
  * @param {{ weights: Record<string, number>, threshold: number, minSkillLevel?: Record<string, number>, fallbackCourseId?: string | null, fallbackLabel?: string | null, fallbackUrl?: string | null }} course
  * @param {Array<{ id: string, name: string }>} skills
@@ -44,7 +45,7 @@ export function evaluateCourse(skillScores, course, skills) {
   const weights = course.weights || {}
   let weightedScore = 0
   for (const [skillId, score] of Object.entries(skillScores)) {
-    const w = weights[skillId] ?? 0
+    const w = skillId in weights ? weights[skillId] : 1
     weightedScore += (score || 0) * w
   }
 
