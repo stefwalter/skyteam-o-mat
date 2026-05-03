@@ -14,7 +14,8 @@
       "resultAction": "cancel",
       "expectPayload": {
         "meetsThreshold": false,
-        "courseId": "hike-and-fly-woche"
+        "courseId": "hike-and-fly-woche",
+        "allSkillIdsInScores": true
       }
     },
     "practiceRecommended": {
@@ -31,7 +32,8 @@
       "expectPayload": {
         "meetsThreshold": true,
         "courseId": "hike-and-fly-woche",
-        "missingSkillNamesMinLength": 1
+        "allSkillIdsInScores": true,
+        "atLeastOneSkillBelowMin": true
       }
     },
     "perfectMatch": {
@@ -48,7 +50,8 @@
       "expectPayload": {
         "meetsThreshold": true,
         "courseId": "hike-and-fly-woche",
-        "missingSkillNamesMaxLength": 0
+        "allSkillIdsInScores": true,
+        "noSkillBelowMin": true
       }
     }
   }

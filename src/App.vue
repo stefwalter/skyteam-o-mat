@@ -56,15 +56,19 @@ const canGoNext = computed(() => {
   return false
 })
 
-const result = computed(() => {
-  if (!currentCourse.value) return null
-  const skillScores = computeSkillScores(
+const skillScores = computed(() => {
+  if (!currentCourse.value) return {}
+  return computeSkillScores(
     answers.value,
     questions,
     questionsById,
     questionOrder
   )
-  return evaluateCourse(skillScores, currentCourse.value, skills)
+})
+
+const result = computed(() => {
+  if (!currentCourse.value) return null
+  return evaluateCourse(skillScores.value, currentCourse.value, skills)
 })
 
 const showResult = ref(false)
@@ -208,6 +212,8 @@ onUnmounted(() => {
         v-if="showResult && currentCourse && result"
         :course="currentCourse"
         :result="result"
+        :skills="skills"
+        :skill-scores="skillScores"
         :skill-names="Object.fromEntries(skills.map((s) => [s.id, s.name]))"
         :on-complete="onComplete"
         :on-cancel-booking="onCancelBooking"

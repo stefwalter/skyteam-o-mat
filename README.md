@@ -23,7 +23,7 @@ Ein Vue-3-Wizard zur Einschätzung, ob ein Gleitschirm-Kurs oder eine Tour zum K
 | Ergebnisfeld | `input#bemerkungen` |
 | sessionStorage-Key | `skyteam_o_mat` |
 
-Nach **Buchen** / **Trotzdem buchen** oder **Abbrechen**: Ergebnis unter diesem Key in sessionStorage und das Ergebnisfeld mit dem JSON-String befüllt (sofern das Element existiert). Nur bei **Buchen** / **Trotzdem buchen** folgt die Navigation zur Buchungs-URL des Trigger-Links. Inhalt u. a. `courseId`, `courseName`, `meetsThreshold`, `missingSkillNames`, `weightedScore`, `threshold`, `completedAt`.
+Nach **Buchen** / **Trotzdem buchen** oder **Abbrechen**: Ergebnis unter diesem Key in sessionStorage und das Ergebnisfeld mit dem JSON-String befüllt (sofern das Element existiert). Nur bei **Buchen** / **Trotzdem buchen** folgt die Navigation zur Buchungs-URL des Trigger-Links. Inhalt u. a. `courseId`, `meetsThreshold`, `skillScores` (alle Skill-IDs → Nutzer-Score), `weightedScore`, `threshold`, `completedAt`.
 
 ### WordPress
 

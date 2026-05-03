@@ -8,8 +8,11 @@ const repoRoot = join(__dirname, '..')
 
 const personas = JSON.parse(readFileSync(join(__dirname, 'personas.json'), 'utf8'))
 const questionsData = JSON.parse(readFileSync(join(repoRoot, 'questions.json'), 'utf8'))
+const coursesData = JSON.parse(readFileSync(join(repoRoot, 'courses.json'), 'utf8'))
 const questionOrder = questionsData.questionOrder || questionsData.questions.map((q) => q.id)
 const questionsById = Object.fromEntries(questionsData.questions.map((q) => [q.id, q]))
+const skillsList = coursesData.skills || []
+const harnessCourse = coursesData.courses.find((c) => c.id === personas.courseId)
 
 /**
  * @param {import('@playwright/test').Page} page
@@ -61,6 +64,33 @@ async function runWizardAnswers(page, answers) {
   await expect(page.getByRole('region', { name: 'Ergebnis' })).toBeVisible()
 }
 
+/**
+ * @param {Record<string, unknown>} payload
+ * @param {typeof personas.personas.belowThreshold.expectPayload} expectPayload
+ */
+function expectCompletionPayloadSkillScores(payload, expectPayload) {
+  expect(payload.courseId).toBe(expectPayload.courseId)
+  expect(payload.meetsThreshold).toBe(expectPayload.meetsThreshold)
+  if (expectPayload.allSkillIdsInScores) {
+    for (const s of skillsList) {
+      expect(payload.skillScores).toHaveProperty(s.id)
+      expect(typeof payload.skillScores[s.id]).toBe('number')
+    }
+  }
+  const minLevel = harnessCourse?.minSkillLevel || {}
+  if (expectPayload.atLeastOneSkillBelowMin) {
+    const anyBelow = Object.entries(minLevel).some(
+      ([id, min]) => payload.skillScores[id] < min
+    )
+    expect(anyBelow).toBe(true)
+  }
+  if (expectPayload.noSkillBelowMin) {
+    for (const [id, min] of Object.entries(minLevel)) {
+      expect(payload.skillScores[id]).toBeGreaterThanOrEqual(min)
+    }
+  }
+}
+
 test.beforeEach(async ({ page, context }) => {
   await context.clearCookies()
   await page.goto('/')
@@ -79,9 +109,12 @@ test('persona below threshold: cancel does not navigate', async ({ page }) => {
   await page.getByRole('button', { name: 'Abbrechen' }).click()
 
   await expect(page).not.toHaveURL(/booking-hike-fly-woche-done/)
+  const raw = await page.evaluate(() => sessionStorage.getItem('skyteam_o_mat'))
+  expect(raw).toBeTruthy()
+  expectCompletionPayloadSkillScores(JSON.parse(raw), p.expectPayload)
 })
 
-test('persona practice recommended: book navigates and remarks include missing skills', async ({
+test('persona practice recommended: book navigates and payload has scores below min', async ({
   page,
 }) => {
   const p = personas.personas.practiceRecommended
@@ -94,14 +127,10 @@ test('persona practice recommended: book navigates and remarks include missing s
 
   const raw = await page.locator('#bemerkungen').inputValue()
   const payload = JSON.parse(raw)
-  expect(payload.meetsThreshold).toBe(true)
-  expect(payload.courseId).toBe('hike-and-fly-woche')
-  expect(payload.missingSkillNames.length).toBeGreaterThanOrEqual(
-    p.expectPayload.missingSkillNamesMinLength
-  )
+  expectCompletionPayloadSkillScores(payload, p.expectPayload)
 })
 
-test('persona perfect match: book navigates and no missing skill names', async ({ page }) => {
+test('persona perfect match: book navigates and all skills meet min levels', async ({ page }) => {
   const p = personas.personas.perfectMatch
   await runWizardAnswers(page, p.answers)
 
@@ -112,8 +141,5 @@ test('persona perfect match: book navigates and no missing skill names', async (
 
   const raw = await page.locator('#bemerkungen').inputValue()
   const payload = JSON.parse(raw)
-  expect(payload.meetsThreshold).toBe(true)
-  expect(payload.missingSkillNames.length).toBeLessThanOrEqual(
-    p.expectPayload.missingSkillNamesMaxLength
-  )
+  expectCompletionPayloadSkillScores(payload, p.expectPayload)
 })

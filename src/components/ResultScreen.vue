@@ -2,18 +2,21 @@
 const props = defineProps({
   course: { type: Object, required: true },
   result: { type: Object, required: true },
+  skills: { type: Array, required: true },
+  skillScores: { type: Object, required: true },
   skillNames: { type: Object, default: () => ({}) },
   onComplete: { type: Function, default: null },
   onCancelBooking: { type: Function, default: null },
 })
 
 function getCompletionPayload() {
-  const missingSkillNames = (props.result.missingSkills || []).map((s) => props.skillNames[s.id] ?? s.id)
+  const skillScoresOut = Object.fromEntries(
+    props.skills.map((s) => [s.id, props.skillScores[s.id] ?? 0])
+  )
   return {
     courseId: props.course.id,
-    courseName: props.course.name,
     meetsThreshold: props.result.meetsThreshold,
-    missingSkillNames,
+    skillScores: skillScoresOut,
     weightedScore: props.result.weightedScore,
     threshold: props.result.threshold,
     completedAt: new Date().toISOString(),
