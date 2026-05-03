@@ -26,6 +26,17 @@ Use this file as shared context and conventions for the Skyteam-o-mat project.
 
 ---
 
+## Testing
+
+- **`npm run test`**: **Vitest** only. `vite.config.js` sets `test.include` to `src/**/*.test.js` and `tests/**/*.test.js` so Playwright files under `outcome-harness/` (named `*.spec.js`) are **not** picked up by Vitest.
+- **Unit / scoring**: `src/composables/useScoring.test.js` covers `computeSkillScores` and `evaluateCourse`.
+- **Persona recipes**: `tests/outcome-personas.test.js` asserts that answer maps in `outcome-harness/personas.json` produce the intended threshold / missing-skills outcomes for the configured course (no browser).
+- **Browser outcome harness**: **`outcome-harness/`** loads the **built** embed (`dist/skyteam-wizard.js` copied into `public/` by `scripts/prepare-public.mjs`), serves a minimal host page with the same trigger + `#bemerkungen` contract as production, and runs **Playwright** (`outcomes.spec.js`). Three personas: below threshold → **Abbrechen** (no navigation to booking); practice / perfect match → **Buchen** (navigation + assertions on remarks / payload). Playwright config starts **`serve`** on port 4179; details and a **Cursor shell Task** one-liner are in **`outcome-harness/README.md`**.
+- **`npm run test:outcomes`**: Runs `build:embed` then Playwright with `outcome-harness/playwright.config.js`. Requires **`npx playwright install`** once per machine.
+- **Gitignore**: Playwright output (`test-results/`, `playwright-report/`) and the copied `outcome-harness/public/skyteam-wizard.js` build artifact.
+
+---
+
 ## Language
 
 - **User-facing text is German**: All content in the JSON files (question text, options, scale labels, course names, descriptions, fallback labels) and all wizard UI (buttons, verdicts, “practice these skills”, progress) must be in German.
@@ -56,6 +67,9 @@ Use this file as shared context and conventions for the Skyteam-o-mat project.
 | `vite.embed.config.js` | Vite-Lib-Build → IIFE `skyteam-wizard.js` (Standard-Ziel: `dist/`). |
 | `vite.wordpress.config.js` | Gleicher Lib-Build, Ausgabe in `wordpress/skyteam-o-mat/assets/`. |
 | `wordpress/skyteam-o-mat/skyteam-o-mat.php` | WordPress-Plugin: Script registrieren/einbinden, Filter & Shortcode. |
+| `outcome-harness/` | Browser outcome tests: Playwright spec, `personas.json`, fixture HTML under `public/`, `prepare-public.mjs`, `playwright.config.js`. |
+| `outcome-harness/README.md` | How to run `test:outcomes` and optional Cursor Task instructions. |
+| `tests/outcome-personas.test.js` | Vitest: validates persona answer maps against `useScoring` + repo JSON. |
 
 ---
 

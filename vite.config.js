@@ -5,6 +5,10 @@ import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 export default defineConfig({
   plugins: [vue(), cssInjectedByJsPlugin()],
   base: './',
+  /** Only *.test.js — Playwright lives under outcome-harness/*.spec.js and must not run under Vitest. */
+  test: {
+    include: ['src/**/*.test.js', 'tests/**/*.test.js'],
+  },
   build: {
     cssCodeSplit: false,
     rollupOptions: {

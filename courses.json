@@ -1,6 +1,6 @@
 {
   "skills": [
-    { "id": "formard_launch", "name": "Forwärts Start" },
+    { "id": "forward_launch", "name": "Forwärts Start" },
     { "id": "kiting", "name": "Kiten am Wind" },
     { "id": "reverse_launch", "name": "Rückwärts Start" },
     { "id": "punkt_landung", "name": "Landung auf kleiner Fläche" },

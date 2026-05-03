@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>Buchung bestätigt (Fixture)</title>
+</head>
+<body>
+  <p>Fixture: Buchungsziel nach Wizard.</p>
+  <p>
+    <label for="bemerkungen">Bemerkungen</label>
+    <input id="bemerkungen" type="text" name="bemerkungen" readonly autocomplete="off" />
+  </p>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        var v = sessionStorage.getItem('skyteam_o_mat')
+        if (v) document.getElementById('bemerkungen').value = v
+      } catch (e) {}
+    })
+  </script>
+</body>
+</html>

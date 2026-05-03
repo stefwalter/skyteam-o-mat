@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:embed": "vite build --config vite.embed.config.js",
+    "test:outcomes": "npm run build:embed && playwright test --config outcome-harness/playwright.config.js",
     "build:wp": "node scripts/sync-wp-version.mjs && vite build --config vite.wordpress.config.js && node scripts/zip-wp-plugin.mjs",
     "sync:wp-version": "node scripts/sync-wp-version.mjs",
     "preview": "vite preview",
@@ -17,7 +18,9 @@
     "vue": "^3.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.49.0",
     "@vitejs/plugin-vue": "^5.0.0",
+    "serve": "^14.2.4",
     "vite": "^5.0.0",
     "vite-plugin-css-injected-by-js": "^4.0.1",
     "vitest": "^2.0.0"

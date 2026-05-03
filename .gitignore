@@ -5,3 +5,8 @@ node_modules
 *.bak
 *.zip
 wordpress/skyteam-o-mat/assets/
+
+# Playwright / outcome harness artifacts
+/test-results/
+/playwright-report/
+/outcome-harness/public/skyteam-wizard.js
