@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Skyteam-o-mat
  * Description:       Kurs-Finder wizard (modal on booking links, result in #bemerkungen).
- * Version:           0.1.8
+ * Version:           0.1.9
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Skyteam
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SKYTEAM_O_MAT_VERSION', '0.1.8' );
+define( 'SKYTEAM_O_MAT_VERSION', '0.1.9' );
 define( 'SKYTEAM_O_MAT_PLUGIN_FILE', __FILE__ );
 define( 'SKYTEAM_O_MAT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SKYTEAM_O_MAT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
