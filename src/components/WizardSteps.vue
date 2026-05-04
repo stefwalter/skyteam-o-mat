@@ -159,6 +159,7 @@ const emit = defineEmits(['update:modelValue', 'next', 'back', 'changeCourse'])
   margin-bottom: 0.5rem;
 }
 .input-wrap input {
+  box-sizing: border-box;
   width: 100%;
   max-width: 20rem;
   padding: 0.5rem 0.75rem;

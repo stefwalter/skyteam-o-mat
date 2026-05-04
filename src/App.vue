@@ -224,6 +224,7 @@ onUnmounted(() => {
 
 <style scoped>
 .wizard-root {
+  box-sizing: border-box;
   width: 100%;
   max-width: 36rem;
   margin: 0 auto;
@@ -248,6 +249,7 @@ onUnmounted(() => {
   gap: 0.75rem;
 }
 .course-card {
+  box-sizing: border-box;
   display: block;
   width: 100%;
   padding: 1rem;
