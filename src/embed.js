@@ -77,7 +77,7 @@ function prefillResultField(selector, storageKey) {
     const el = document.querySelector(selector)
     if (el && 'value' in el) {
       el.value = raw
-      console.log('SkyTeam-o-mat: result field filled', selector)
+      console.log('SkyTeam-o-mat: result field filled', selector, raw)
     }
   } catch (_) {}
 }

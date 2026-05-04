@@ -6,7 +6,8 @@
     { "id": "punkt_landung", "name": "Landung auf kleiner Fläche" },
     { "id": "starkwind_landung", "name": "Starkwind Landung" },
     { "id": "fitness_cardio", "name": "Cardio Training" },
-    { "id": "fitness_mountain", "name": "Hike Erfahrung" }
+    { "id": "fitness_mountain", "name": "Hike Erfahrung" },
+    { "id": "hike_and_fly", "name": "Hike & Fly" }
   ],
   "courses": [
     {
@@ -14,7 +15,7 @@
       "name": "Hike and Fly Woche",
       "description": "Einer Woche voller Hike and Fly, in den schönen Südtiroler Herbst.",
       "url": "/courses/hike-and-fly-woche",
-      "threshold": 1,
+      "threshold": 9,
       "weights": {
         "forward_launch": 1,
         "kiting": 1,
@@ -22,16 +23,18 @@
         "punkt_landung": 1,
         "starkwind_landung": 1,
         "fitness_cardio": 1,
-        "fitness_mountain": 1
+        "fitness_mountain": 1,
+        "hike_and_fly": 1
       },
       "minSkillLevel": {
-        "forward_launch": 3,
+        "forward_launch": 2,
         "kiting": 1,
         "reverse_launch": 2,
         "punkt_landung": 1,
         "starkwind_landung": 2,
-        "fitness_cardio": 0,
-        "fitness_mountain": 0
+        "fitness_cardio": 1,
+        "fitness_mountain": 0,
+        "hike_and_fly": 0
       },
       "fallbackCourseId": null,
       "fallbackLabel": null,
