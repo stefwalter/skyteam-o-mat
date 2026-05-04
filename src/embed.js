@@ -6,7 +6,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-/** Injected at build time from package.json "version" (vite.embed.config.js). */
+/** Injected at build time from package.json "version" (vite.config.js / vite.embed.config.js). */
 const SKYTEAM_O_MAT_VERSION = __SKYTEAM_O_MAT_VERSION__
 console.log('SkyTeam-o-mat:', SKYTEAM_O_MAT_VERSION)
 
