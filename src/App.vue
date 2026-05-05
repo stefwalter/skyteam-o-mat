@@ -197,7 +197,7 @@ onUnmounted(() => {
         class="intro-screen wizard-section"
         aria-label="Einführung"
       >
-        <h2 class="wizard-title">Buchungs Fragebogen</h2>
+        <h2 class="wizard-title">Buchungsfragebogen</h2>
         <p class="intro-text">
           Wir möchten dir einige Fragen stellen, um deine Fähigkeiten und Erfahrungen besser einschätzen
           zu können.

@@ -37,10 +37,10 @@ function cancelBooking() {
     <h2 class="result-title">Ergebnis für {{ course.name }}</h2>
 
     <div v-if="result.meetsThreshold" class="verdict verdict-ok">
-      <p><strong>Super. Dieser Kurs könnte ihre Fähigkeiten passen.</strong></p>
+      <p><strong>Super. Dieser Kurs könnte deinen Fähigkeiten entsprechen.</strong></p>
     </div>
     <div v-else class="verdict verdict-suggest">
-      <p><strong>Wir empfehlen zuerst einen einfacheren Kurs.</strong></p>
+      <p><strong>Wir empfehlen dir zunächst einen weniger anspruchsvollen Kurs.</strong></p>
       <p v-if="result.fallbackLabel && result.fallbackUrl">
         <a :href="result.fallbackUrl" class="link">{{ result.fallbackLabel }}</a>
       </p>
@@ -48,7 +48,7 @@ function cancelBooking() {
     </div>
 
     <div v-if="result.missingSkills && result.missingSkills.length" class="missing-skills">
-      <h3>Diese Bereiche solltest du zusätzlich üben</h3>
+      <h3>Diese Bereiche solltest du, vor der Teilnahme, zusätzlich trainieren.</h3>
       <ul>
         <li v-for="s in result.missingSkills" :key="s.id">
           {{ skillNames[s.id] ?? s.id }}

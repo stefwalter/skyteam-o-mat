@@ -1,8 +1,8 @@
 {
   "skills": [
-    { "id": "forward_launch", "name": "Forwärts Start" },
-    { "id": "kiting", "name": "Kiten am Wind" },
-    { "id": "reverse_launch", "name": "Rückwärts Start" },
+    { "id": "forward_launch", "name": "Vorwärtsstart" },
+    { "id": "kiting", "name": "Kiten im Wind/Groundhandling" },
+    { "id": "reverse_launch", "name": "Rückwärtsstart" },
     { "id": "punkt_landung", "name": "Landung auf kleiner Fläche" },
     { "id": "starkwind_landung", "name": "Starkwind Landung" },
     { "id": "fitness_cardio", "name": "Cardio Training" },
